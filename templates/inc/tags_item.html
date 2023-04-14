@@ -1,0 +1,8 @@
+<div class="ms-3">    
+    {% for tag in question.tags.all%}
+
+    <a class="px-2 py-1 d-inline-block rounded text-nowrap my-1 text-decoration-none text-dark" style="background-color: rgba({{tag.color}}, 0.2)" href="{% url "tag_page" tag_name=tag.name %}">
+        {{tag.name}}
+    </a>
+    {% endfor %}
+</div>

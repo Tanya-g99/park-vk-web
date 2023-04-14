@@ -1,0 +1,13 @@
+.rowEvent {
+  display: grid;
+  grid-template-columns: auto minmax(0%, 100%) auto;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.rowEvent img {
+  height: 7vh;
+  width: auto;
+}
+.rowEvent div {
+  display: block;
+}/*# sourceMappingURL=events.css.map */

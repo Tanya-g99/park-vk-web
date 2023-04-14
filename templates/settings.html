@@ -1,0 +1,13 @@
+{% extends 'inc/base.html' %} {% block content %}
+  <div class="profile border my-4 mx-auto shadow rounded text-center">
+    <form class="px-4 needs-validation">
+      <div class="form-group">
+        <input type="nickname" name="nickname" class="form-control my-3" placeholder="nickname" value="nickname" />
+        <input type="email" name="email" class="form-control my-3" placeholder="email" value="email" />
+        <input type="current-password" name="password" class="form-control my-3" placeholder="password" value="password" />
+        <input type="file" name="avatar" class="form-control my-3" placeholder="Upload avatar" />
+      </div>
+      <button type="button" class="btn btn-success w-100">Save</button>
+    </form>
+  </div>
+{% endblock %}

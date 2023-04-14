@@ -1,0 +1,30 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>AskMe</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <meta name="theme-color" content="#712cf9">
+    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+  </head>
+  <body>
+    <div class="h-100 align-items-center d-flex text-center ">
+    <div class="text-center w-100">
+      <h1 class="display-1 fw-bold">404</h1>
+      <p class="fs-3">
+        <span class="text-danger">Opps!</span> You're lost
+      </p>
+      <p class="mb-3">We can not find the page you're looking for.</p>
+      <div class="d-flex flex-row justify-content-center">
+        <a href="{% url "index" %}" class="btn btn-success mtl">
+          <i class="fa fa-home"></i>&nbsp;
+          Return home
+        </a>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

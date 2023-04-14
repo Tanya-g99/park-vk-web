@@ -1,0 +1,31 @@
+<div class="row border border-4 rounded-3 shadow-sm border-secondary p-2 mb-3">
+  <div class="d-inline-flex p-0 pb-2">
+    <img src="{% static "/img/profile.jpg" %}" alt="logo" class="p-0 avatar border border-3 border-success rounded-circle" />
+    <a href="{% url "question" id=question.id %}" class="h4 text-light-green text-green__hover mx-2 m-0 align-self-center d-inline-flex text-decoration-none">{{ question }}</a>
+  </div>
+  <hr />
+  <div class="info-block pb-2">
+    <!-- Avatar -->
+
+    <!-- Like / Dislike -->
+    <div class="input-group py-1" style="width: 96px">
+      <input class="form-control bg-light text-center" value="{{question.rating}}" disabled readonly />
+      <div class="input-group-text d-flex flex-column py-1 px-1">
+        <svg width="16" height="16" class="bi bi-caret-up text-green__hover hover">
+          <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+        </svg>
+        <svg width="16" height="16" class="bi bi-caret-down text-green__hover hover">
+          <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+        </svg>
+      </div>
+    </div>
+    <a href="{% url "question" id=question.id %}" style="width: 96px" class="mt-1 btn btn-success"><span class="fs-3">{{ question.answers_count }}</span> answers</a>
+  </div>
+  <!-- Text block -->
+  <div class="text-block">
+    <p class="two-lines ms-3 mb-2">{{ question.text }}</p>
+
+    {% include 'inc/tags_item.html' %}
+
+  </div>
+</div>

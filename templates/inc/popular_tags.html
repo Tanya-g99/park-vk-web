@@ -1,0 +1,9 @@
+<div class="col col-md-auto mb-3">
+    <h3 class="mb-lg-2 ms-2">Popular Tags</h3>
+    {% for tag in popular_tags %}
+
+    <a class="px-2 py-1 d-inline-block rounded text-nowrap my-1 text-decoration-none text-dark" style="background-color: rgba({{tag.color}}, 0.2)" href="{% url "tag_page" tag_name=tag %}">
+        {{tag}}
+    </a>
+    {% endfor %}
+</div>

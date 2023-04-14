@@ -1,0 +1,21 @@
+.navbar__logo {
+  width: calc(35px + 2vw);
+}
+
+.navbar__search {
+  position: relative;
+}
+.navbar__search input {
+  padding-right: 2.5rem;
+}
+.navbar__search svg {
+  width: 1.8rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  right: 0.875rem;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+}/*# sourceMappingURL=navbar.css.map */

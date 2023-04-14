@@ -1,0 +1,29 @@
+{% extends 'inc/base.html' %} {% block content %}
+  <div class="container-sm p-2vw mb-4">
+    <div class="profile border my-4 mx-auto shadow rounded text-center">
+      <form method="post" action="/login" class="px-4 login__form-signin needs-validation" novalidate>
+        <p class="h3 text-green mb-1">Please, login</p>
+        <img class="my-3 form-img" src="{% static "/img/log.png" %}" alt="" />
+        <div class="form-group">
+          <div class="form-floating">
+            <input type="email" name="email" class="form-control" id="logEmail" placeholder="name@example.com" maxlength="255" required />
+            <label htmlFor="floatingInput">Email</label>
+            <div class="invalid-tooltip">
+              Please enter a valid email
+            </div>
+          </div>
+          <div class="form-floating">
+            <input type="password" name="password" class="form-control" id="logPassword" placeholder="Password" maxlength="255" required />
+            <label htmlFor="floatingPassword">Password</label>
+            <div class="invalid-tooltip">
+              Please enter a valid password
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn login__btn mb-2 bg-gray-400 border border-4 w-100">Login</button>
+        <a href="{%url 'register' %}" class="btn login__btn bg-gray-400 border border-4 w-100">Register</a>
+        <p class="mt-2 mb-3">&copy; 2023</p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
