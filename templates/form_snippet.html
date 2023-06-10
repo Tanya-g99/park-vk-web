@@ -1,0 +1,10 @@
+{% load django_bootstrap5 %}
+
+<img class="my-3 form-img" src="{% static "/img/log.png" %}" alt="" />
+<div class="form-group mb-3">
+  {% for field in form %}
+    {% comment %} {% bootstrap_label field.label_tag label_for = 'floatingInput' %} {% endcomment %}
+    {% bootstrap_field field wrapper_class='form-item' field_class='form-control' show_label=False %}
+    <div class="invalid-tooltip">{{ field.errors }}</div>
+  {% endfor %}
+</div>

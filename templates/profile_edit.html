@@ -1,0 +1,46 @@
+{% extends 'inc/base.html' %} 
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="profile border my-4 mx-auto shadow rounded text-center">
+    <form method="post" class="px-4 needs-validation">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        <div class="form-group mb-3">
+          {% for field in form %}
+            {% bootstrap_field field wrapper_class='form-item my-3' field_class='form-control' show_label=False %}
+          {% endfor %}
+        </div>
+        <button type="submit" class="btn login__btn mb-2 bg-gray-400 border border-4 w-100"><span class="">Save</span></button>
+    </form>
+    {% comment %} <form class="px-4 needs-validation" novalidate>
+        <p class="h3 text-green mb-1">Settings</p>
+        <img class="my-3 form-img" src="{% static "img/log.png" %}" alt="" />
+          <div class="form-group">
+            <div class="form-floating my-3">
+              <input type="text" name="nickname" class="form-control" id="settingsNickname" placeholder="nickname" value="{{user}}" required maxlength="255" required/>
+              <label htmlFor="settingsNickname">Nickname</label>
+              <div class="invalid-tooltip">
+                Please enter a nickname
+              </div>
+            </div>
+            <div class="form-floating my-3">
+              <input type="email" name="email" class="form-control" id="settingsEmail" placeholder="name@example.com" value="{{user.email}}" maxlength="255" required />
+              <label htmlFor="settingsEmail">Email</label>
+              <div class="invalid-tooltip">
+                Please enter a valid email
+              </div>
+            </div>
+            <div class="form-floating my-3">
+              <input type="current-password" class="form-control" name="password" id="settingsPassword" placeholder="password" value="{{user.password}}" required maxlength="255" minlength="8" required/>
+              <label htmlFor="settingsPassword">Password</label>
+              <div class="invalid-tooltip">
+                Please enter a valid password
+              </div>
+            </div>
+            <input type="file" name="avatar" class="form-control my-3" placeholder="Upload avatar" value="{% static "user.avatar" %}" />
+          </div>
+            <button type="submit" class="btn login__btn mb-2 bg-gray-400 border border-4 w-100"><span class="">Save</span></button>
+    </form> {% endcomment %}
+  </div>
+{% endblock %}

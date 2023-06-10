@@ -1,0 +1,24 @@
+{% extends 'inc/base.html' %} 
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container-sm p-2vw mb-4">
+    <div class="profile border my-4 mx-auto shadow rounded text-center">
+      <form method="post" class="px-4 login__form-signin needs-validation" novalidate>
+        <p class="h3 text-green mb-1">Creation Question</p>
+        <img class="my-3 form-img" src="{% static "/img/log.png" %}" alt="" />
+        
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        <div class="form-group mb-3">
+        {% for field in form %}
+            {% bootstrap_field field wrapper_class='form-item my-3' field_class="form-control" show_label=False %}
+        {% endfor %}
+        </div>
+        <button type="submit" value="Submit" class="btn login__btn mb-2 bg-gray-400 border border-4 w-100">Ask!</button>
+        <p class="mt-2 mb-3">&copy; 2023</p>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+{% comment %} Please enter a valid question title {% endcomment %}

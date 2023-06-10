@@ -1,5 +1,6 @@
 {% extends 'inc/base.html' %}
 {% load static %}
+{% load django_bootstrap5 %}
 {% block content %}
   <div class="mb-0 container-md p-1vw">
     <div class="mb-0 container-md">
@@ -31,12 +32,17 @@
       </div>
       <hr />
       <!-- Enter your answer -->
-      <form class="mb-3 needs-validation" novalidate>
-        <div class="form-floating">
+      <form method="post" class="mb-3 needs-validation" novalidate>
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% for field in form %}
+            {% bootstrap_field field wrapper_class='form-item my-3' field_class="form-control" show_label=False %}
+        {% endfor %}
+        {% comment %} <div class="form-floating">
           <textarea style="height: 100px;" name="comment" class="form-control my-3" placeholder="Enter your answer here" maxlength="1000" required></textarea>
           <div class="invalid-tooltip">Please enter an answer</div>
-        </div>
-        <button type="submit" class="btn btn-success">Answer</button>
+        </div> {% endcomment %}
+        <button type="submit" value="Submit" class="btn btn-success">Answer</button>
       </form>
       <hr />
       {% include 'inc/answer_list.html' %}
