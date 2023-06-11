@@ -7,7 +7,7 @@ from django.http import HttpRequest
 
 class LoginForm(forms.Form):
     email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), max_length=80, min_length=6)
 
 
 class EditForm(forms.ModelForm):
@@ -49,9 +49,9 @@ class EditForm(forms.ModelForm):
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(label="Nickname")
     email = forms.EmailField(label="Email")
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), max_length=80, min_length=6)
     confirm_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Repeat Password'}))
+        attrs={'placeholder': 'Repeat Password'}), max_length=80, min_length=6)
 
     class Meta:
         model = models.Profile
@@ -61,9 +61,6 @@ class RegisterForm(forms.ModelForm):
     def save(self):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.pop('confirm_password')
-        if len(password) < 6:
-            self.add_error(field=None, error="Password is too short")
-            return False
         if password != confirm_password:
             self.add_error(
                 field=None, error="Password and the confirmation password do not match")

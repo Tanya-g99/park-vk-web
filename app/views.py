@@ -35,8 +35,7 @@ def ask(request: HttpRequest):
                 new_question = form.save(request.user)
                 if new_question:
                     return HttpResponseRedirect("/")
-
-
+                    
     else:
         if request.user.is_authenticated:
             form = QuestionForm()
@@ -55,10 +54,14 @@ def login(request: HttpRequest):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            user = auth.authenticate(request, **form.cleaned_data)
-            if user:
-                auth.login(request, user)
-                return HttpResponseRedirect(request.GET.get('continue'))
+            email = form.cleaned_data.get('email')
+            user_by_email = auth.models.User.objects.filter(email=email)
+            if user_by_email:
+                user = auth.authenticate(request, username=user_by_email[0].username, **form.cleaned_data)
+                if user:
+                    auth.login(request, user)
+                    return HttpResponseRedirect(request.GET.get('continue'))
+                
             form.add_error(field=None, error="User not found")
 
     else:

@@ -3,40 +3,9 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <div class="profile border my-4 mx-auto shadow rounded text-center">
-    <form method="post" class="px-4 register__form-signin needs-validation" novalidate>
+    <form method="post" class="px-4 register__form-signin needs-validation">
       <p class="h3 text-green mb-1">Please, register</p>
       <img class="my-3 form-img" src="{% static "img/log.png" %}" alt="" />
-      {% comment %} <div class="form-floating">
-        <input type="text" name="nickname" class="form-control" id="nickname" placeholder="nickname" required maxlength="255" required/>
-        <label htmlFor="nickname">Nickname</label>
-        <div class="invalid-tooltip">
-          Please enter a nickname
-        </div>
-      </div>
-      <div class="form-floating">
-        <input type="email" class="form-control" name="email" id="rgEmail" placeholder="name@example.com" required maxlength="255" required/>
-        <label htmlFor="floatingInput">Email</label>
-        <div class="invalid-tooltip">
-          Please enter a valid email
-        </div>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" name="Password" id="rgPassword" placeholder="Password" required maxlength="255" minlength="8" required/>
-        <label htmlFor="rgPassword">Password</label>
-        <div class="invalid-tooltip">
-          Please enter a valid password
-        </div>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="password-2 form-control" id="confirmPassword" name="confirmPassword" placeholder="Password" required maxlength="255" minlength="8" />
-        <label htmlFor="confirmPassword">Confirm password</label>
-        <div class="invalid-tooltip">
-          Please confirm a valid password
-        </div>
-      </div>
-      <div class="mt-3 mb-3">
-        <input type="file" class="form-control h-auto" id="loadProfilePic" placeholder="dsds" />
-      </div> {% endcomment %}
 
       {% csrf_token %}
       {% bootstrap_form_errors form %}
@@ -45,6 +14,7 @@
             {% bootstrap_field field wrapper_class='form-item my-3' field_class="form-control" show_label=False %}
         {% endfor %}
       </div>
+
       <button type="submit" class="btn login__btn mb-2 bg-gray-400 border border-4 w-100"><span class="">Register</span></button>
       <a href="{%url 'login' %}" class="btn login__btn bg-gray-400 border border-4 w-100">Login</a>
       <p class="mt-2 mb-3">&copy; 2023</p>
