@@ -116,7 +116,12 @@ class AnswerForm(forms.ModelForm):
         model = models.Answer
         fields = ['text']
         labels = {
-            'text': _(''),
+            'text': "",
+        }
+        widgets = {
+            'text' : forms.Textarea(
+            attrs={"placeholder": "Enter your answer here...",}
+        )
         }
 
     def save(self, user, question):
