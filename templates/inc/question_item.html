@@ -1,7 +1,10 @@
 {% load static %}
 <div class="row border border-4 rounded-3 shadow-sm border-secondary p-2 mb-3">
   <div class="d-inline-flex p-0 pb-2">
-    <img src="{% static "/img/profile.jpg" %}" alt="logo" class="p-0 avatar border border-3 border-success rounded-circle" />
+    <div class="text-center">
+      <img src="{% static "/img/profile.jpg" %}" alt="logo" class="p-0 avatar border border-3 border-success rounded-circle" /> 
+      <p class="px-auto p-0">{{ question.author.user.username }}</p>
+    </div>
     <a href="{% url "question" id=question.id %}" class="h4 text-light-green text-green__hover mx-2 m-0 align-self-center d-inline-flex text-decoration-none">{{ question }}</a>
   </div>
   <hr />

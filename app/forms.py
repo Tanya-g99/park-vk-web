@@ -47,7 +47,7 @@ class EditForm(forms.ModelForm):
 
 
 class RegisterForm(forms.ModelForm):
-    username = forms.CharField(label="Nickname")
+    username = forms.CharField(label="Nickname", max_length=30, min_length=3)
     email = forms.EmailField(label="Email")
     password = forms.CharField(widget=forms.PasswordInput(), max_length=80, min_length=6)
     confirm_password = forms.CharField(widget=forms.PasswordInput(
@@ -72,8 +72,6 @@ class RegisterForm(forms.ModelForm):
             return False
 
         username = self.cleaned_data.get('username')
-        if len(username) < 3:
-            self.add_error(field=None, error="Nickname is too short")
         if auth.models.User.objects.filter(username=username):
             self.add_error(field=None, error="This nickname already exist")
             return False
