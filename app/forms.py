@@ -99,10 +99,9 @@ class QuestionForm(forms.ModelForm):
     def save(self, user):
         author = models.Profile.objects.get(user=user)
         tags = self.cleaned_data.pop('tags')
-        if tags != "":
-            tags = {
-                models.Tag.objects.get_or_create(name=tag) for tag in set(tags.split(', '))
-            }
+        tags = {
+            models.Tag.objects.get_or_create(name=tag) for tag in set(tags.split(', ')) if tag != ""
+        }
         question = models.Question.objects.create(
             author=author, **self.cleaned_data)
         for tag in tags:

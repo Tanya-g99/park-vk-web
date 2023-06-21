@@ -34,7 +34,7 @@ def ask(request: HttpRequest):
             if form.is_valid():
                 new_question = form.save(request.user)
                 if new_question:
-                    return HttpResponseRedirect("/")
+                    return HttpResponseRedirect("/question/" + str(new_question.id))
                     
     else:
         if request.user.is_authenticated:
