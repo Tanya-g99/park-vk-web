@@ -60,7 +60,7 @@ def login(request: HttpRequest):
                 user = auth.authenticate(request, username=user_by_email[0].username, **form.cleaned_data)
                 if user:
                     auth.login(request, user)
-                    return HttpResponseRedirect(request.GET.get('continue'))
+                    return HttpResponseRedirect("/") if request.GET.get('continue') is None else HttpResponseRedirect(request.GET.get('continue'))
                 
             form.add_error(field=None, error="User not found")
 

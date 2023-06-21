@@ -1,7 +1,6 @@
 from django import forms
 from app import models
 from django.contrib import auth
-from django.utils.translation import gettext_lazy as _
 from django.http import HttpRequest
 
 
